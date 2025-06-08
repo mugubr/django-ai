@@ -1,9 +1,9 @@
 from django.apps import AppConfig
 
 
-class OraculoConfig(AppConfig):
+class RagConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'oraculo'
+    name = 'rag'
 
     def ready(self):
-        import oraculo.signals  # noqa: F401
+        import rag.signals  # noqa: F401

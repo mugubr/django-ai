@@ -12,9 +12,9 @@ from django_q.tasks import async_task
 @receiver(post_save, sender=Treinamentos)
 def signals_reinamento_ia(sender, instance, created, **kwargs):
     if created:
-        async_task(task_treinar_ia, instance.id)
+        async_task(task_dar_contexto_ia, instance.id)
 
-def task_treinar_ia(instance_id):
+def task_dar_contexto_ia(instance_id):
     treinamentos = Treinamentos.objects.get(id=instance_id)
     documentos = gerar_documentos(treinamentos)
     if not documentos:
@@ -25,7 +25,7 @@ def task_treinar_ia(instance_id):
 
     embeddings = OpenAIEmbeddings(openai_api_key=settings.OPENAI_API_KEY)
 
-    db_path = "banco_faiss"
+    db_path = "faiss_db"
     if os.path.exists(db_path):
         vectordb = FAISS.load_local(db_path, embeddings, allow_dangerous_deserialization=True)
         vectordb.add_documents(chunks)

@@ -48,7 +48,7 @@ def login(request):
 
         if user:
             auth.login(request, user)
-            return redirect('treinar_ia')
+            return redirect('chat')
         
         messages.add_message(request, constants.ERROR, 'Username ou senha inválidos.')
         return redirect('login')

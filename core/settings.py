@@ -20,7 +20,7 @@ INSTALLED_APPS = [
     'rolepermissions',
     'django_q',
     'usuarios',
-    'oraculo',
+    'rag',
 ]
 
 MIDDLEWARE = [

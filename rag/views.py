@@ -12,12 +12,12 @@ from langchain_community.vectorstores import FAISS
 from pathlib import Path
 from django.http import StreamingHttpResponse
 
-def treinar_ia(request):
-    if not has_permission(request.user, 'treinar_ia'):
+def dar_contexto_ia(request):
+    if not has_permission(request.user, 'dar_contexto_ia'):
         raise Http404()
     if request.method == 'GET':
         tasks = Task.objects.all()
-        return render(request, 'treinar_ia.html', {'tasks': tasks})
+        return render(request, 'dar_contexto_ia.html', {'tasks': tasks})
     elif request.method == 'POST':
         site = request.POST.get('site')
         conteudo = request.POST.get('conteudo')
@@ -31,7 +31,7 @@ def treinar_ia(request):
 
         treinamento.save()
 
-        return redirect('treinar_ia')
+        return redirect('dar_contexto_ia')
     
 @csrf_exempt
 def chat(request):
@@ -53,7 +53,7 @@ def stream_response(request):
     pergunta = Pergunta.objects.get(id=id_pergunta)
     def stream_generator():
         embeddings = OpenAIEmbeddings(openai_api_key=settings.OPENAI_API_KEY)
-        vectordb = FAISS.load_local("banco_faiss", embeddings, allow_dangerous_deserialization=True)
+        vectordb = FAISS.load_local("faiss_db", embeddings, allow_dangerous_deserialization=True)
 
         docs = vectordb.similarity_search(pergunta.pergunta, k=5)
         for doc in docs:

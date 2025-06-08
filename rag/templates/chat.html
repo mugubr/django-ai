@@ -1,37 +1,27 @@
 {% extends "base.html" %} {% load static %} {% load permission_tags %} 
 {% block 'conteudo' %}
-<main>
-  <header class="relative isolate bg-lime-200/80">
-    <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <div
-        class="mx-auto flex max-w-2xl items-center justify-between gap-x-8 lg:mx-0 lg:max-w-none"
-      >
-        <div class="flex items-center gap-x-6">
-          <img src="{% static 'img/arcane.png' %}" alt="" class="w-1/3" />
-          <h1>
-            <div class="text-sm/6 text-gray-500">Chat</div>
-            <div class="mt-1 text-base font-semibold text-gray-900">
-              Treinamento da IA
+<main class="bg-gray-100">
+        <header class="relative isolate bg-white">
+            <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+                <div class="mx-auto flex max-w-2xl items-center justify-between gap-x-8 lg:mx-0 lg:max-w-none">
+                    <div class="flex items-center gap-x-6">
+                        <img src="{% static 'img/arcane.png' %}" alt="" class="h-28 bg-white">
+                        <h1>
+                            <div class="text-sm/6 text-green-500">RAG</div>
+                            <div class="mt-1 text-base font-semibold text-green-600">Chat</div>
+                        </h1>
+                    </div>
+                    <div class="flex items-center gap-x-4 sm:gap-x-6">
+                        <a href="{% url 'dar_contexto_ia' %}"
+                           type="button"
+                           class="hidden text-sm/6 font-semibold text-green-600 sm:block hover:text-green-500">Dar contexto à IA</a>
+                          <a href="{% url 'chat' %}"
+                           type="button"
+                           class="hidden text-sm/6 font-semibold text-green-600 sm:block hover:text-green-500">Chat</a>
+                    </div>
+                </div>
             </div>
-          </h1>
-        </div>
-        <div class="flex items-center gap-x-4 sm:gap-x-6">
-          <a
-            href="{% url 'treinar_ia' %}"
-            type="button"
-            class="hidden text-sm/6 font-semibold text-gray-900 sm:block"
-            >Treinamento da IA</a
-          >
-          <a
-            href="{% url 'chat' %}"
-            type="button"
-            class="hidden text-sm/6 font-semibold text-gray-900 sm:block"
-            >Perguntar</a
-          >
-        </div>
-      </div>
-    </div>
-  </header>
+        </header>
   <div class="px-4 md:px-0">
     <div
       class="mx-auto bg-slate-50 mt-8 max-w-4xl px-4 py-16 sm:px-6 lg:px-8 border border-slate-200/60 rounded-md"
@@ -47,15 +37,14 @@
           />
           <div class="flex flex-col gap-1 w-full max-w-[320px]">
             <div class="flex items-center space-x-2 rtl:space-x-reverse">
-              <span class="text-sm font-semibold text-gray-900"
+              <span class="text-sm font-semibold text-green-600"
                 >Assistente</span
               >
-              <span class="text-sm font-normal text-gray-500">11:46</span>
             </div>
             <div
               class="flex flex-col leading-1.5 p-4 border-gray-200 bg-gray-200 rounded-e-xl rounded-es-xl"
             >
-              <p class="text-sm font-normal py-2.5 text-gray-900">
+              <p class="text-sm font-normal py-2.5 text-black">
                 Olá, eu sou sua assistente virtual. Como posso ajudar?
               </p>
             </div>
@@ -76,11 +65,11 @@
             name="pergunta"
             id="pergunta"
             placeholder="Digite sua pergunta..."
-            class="flex-1 border border-slate-300 rounded-md px-4 py-2 text-sm text-gray-800 bg-white"
+            class="flex-1 border border-slate-300 rounded-md px-4 py-2 text-sm text-gray-800 bg-white focus:outline-none focus:border-green-600 focus:ring-1 focus:ring-green-600 transition"
           />
           <button
             type="submit"
-            class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            class="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-green-500 hover:cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
           >
             Enviar
           </button>
@@ -112,10 +101,9 @@
           novaMensagem1.innerHTML = `
                 <div class="flex flex-col gap-1 w-full max-w-[320px] text-right">
                     <div class="flex items-center justify-end space-x-2 rtl:space-x-reverse">
-                    <span class="text-sm font-normal text-gray-500">11:46</span>
                     <span class="text-sm font-semibold text-gray-900">Você</span>
                     </div>
-                        <div class="flex flex-col leading-1.5 p-4 bg-lime-200 text-gray-900 rounded-s-xl rounded-ee-xl">
+                        <div class="flex flex-col leading-1.5 p-4 bg-green-600 text-gray-900 rounded-s-xl rounded-ee-xl">
                         <p class="text-sm font-normal py-2.5">
                             ${pergunta}
                         </p>
@@ -132,12 +120,11 @@
                 <div class="flex flex-col gap-1 w-full max-w-[320px]">
                     <div class="flex items-center space-x-2 rtl:space-x-reverse">
                         <span class="text-sm font-semibold text-gray-900">Assistente</span>
-                        <span class="text-sm font-normal text-gray-500">10:00</span>
                     </div>
                     <div class="flex flex-col leading-1.5 p-4 border-gray-200 bg-gray-200 rounded-e-xl rounded-es-xl">
                         <p id="resposta-pythonete-${perguntaId}" class="text-sm font-normal py-2.5 text-gray-900"></p>
                     </div>
-                   <a href="/oraculo/ver_fontes/${perguntaId}" class="text-sm font-normal text-gray-500 dark:text-gray-400">Confira as fontes</a>
+                   <a href="/rag/ver_fontes/${perguntaId}" class="text-sm font-normal text-gray-500 dark:text-gray-400">Confira as fontes</a>
                 </div>
             `;
 

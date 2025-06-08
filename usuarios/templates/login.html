@@ -1,21 +1,21 @@
 {% extends "base.html" %} {% load static %} {% block 'conteudo' %}
 <div
-  class="flex min-h-screen bg-[#fef5ec]/60 flex-col justify-center py-12 sm:px-6 lg:px-8"
+  class="flex min-h-screen bg-white flex-col justify-center py-12 sm:px-6 lg:px-8"
 >
   <div class="sm:mx-auto sm:w-full sm:max-w-md">
     <img
-      class="mx-auto h-10 w-auto"
+      class="mx-auto h-28"
       src="{% static 'img/arcane.png' %}"
       alt="Your Company"
     />
     <h2
       class="mt-6 text-center text-2xl/9 font-bold tracking-tight text-gray-900"
     >
-      Entra em sua conta
+      Faça o login
     </h2>
   </div>
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
-    <div class="bg-white px-6 py-12 shadow-sm sm:rounded-lg sm:px-12">
+    <div class="bg-white px-6 py-12 shadow-lg sm:rounded-lg sm:px-12">
       {% if messages %} {% for message in messages %}
       <div class="rounded-md {{ message.tags }} mt-4">
         <div class="flex">
@@ -27,14 +27,14 @@
         {% csrf_token %}
         <div>
           <label for="email" class="block text-sm/6 font-medium text-gray-900"
-            >Username</label
+            >Usuário</label
           >
           <div class="mt-2">
             <input
               type="text"
               name="username"
               required
-              class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+              class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-green-600 sm:text-sm/6"
             />
           </div>
         </div>
@@ -49,24 +49,24 @@
               id="senha"
               autocomplete="current-password"
               required
-              class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+              class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-green-600 sm:text-sm/6"
             />
           </div>
         </div>
         <div>
           <button
             type="submit"
-            class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            class="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:cursor-pointer hover:bg-green-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
           >
-            Logar
+            Login
           </button>
         </div>
       </form>
     </div>
     <p class="mt-10 text-center text-sm/6 text-gray-500">
       Não tem uma conta?
-      <a href="{% url 'cadastro' %}" class="font-semibold text-indigo-600 hover:text-indigo-500"
-        >Criar.</a
+      <a href="{% url 'cadastro' %}" class="font-semibold text-green-600 hover:text-green-500"
+        >Cadastre-se</a
       >
     </p>
   </div>
