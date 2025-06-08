@@ -25,7 +25,7 @@ def task_treinar_ia(instance_id):
 
     embeddings = OpenAIEmbeddings(openai_api_key=settings.OPENAI_API_KEY)
 
-    db_path = str(settings.BASE_DIR) + "\\banco_faiss"
+    db_path = "banco_faiss"
     if os.path.exists(db_path):
         vectordb = FAISS.load_local(db_path, embeddings, allow_dangerous_deserialization=True)
         vectordb.add_documents(chunks)
