@@ -1,27 +1,39 @@
 {% extends "base.html" %} {% load static %} {% load permission_tags %} 
 {% block 'conteudo' %}
 <main class="bg-gray-100">
-        <header class="relative isolate bg-white">
-            <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-                <div class="mx-auto flex max-w-2xl items-center justify-between gap-x-8 lg:mx-0 lg:max-w-none">
-                    <div class="flex items-center gap-x-6">
-                        <img src="{% static 'img/arcane.png' %}" alt="" class="h-28 bg-white">
-                        <h1>
-                            <div class="text-sm/6 text-green-500">RAG</div>
-                            <div class="mt-1 text-base font-semibold text-green-600">Chat</div>
-                        </h1>
-                    </div>
-                    <div class="flex items-center gap-x-4 sm:gap-x-6">
-                        <a href="{% url 'dar_contexto_ia' %}"
-                           type="button"
-                           class="hidden text-sm/6 font-semibold text-green-600 sm:block hover:text-green-500">Dar contexto à IA</a>
-                          <a href="{% url 'chat' %}"
-                           type="button"
-                           class="hidden text-sm/6 font-semibold text-green-600 sm:block hover:text-green-500">Chat</a>
-                    </div>
-                </div>
-            </div>
-        </header>
+  <header class="relative isolate bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+      <div
+        class="mx-auto flex max-w-2xl items-center justify-between gap-x-8 lg:mx-0 lg:max-w-none"
+      >
+        <div class="flex items-center gap-x-6">
+          <img
+            src="{% static 'img/arcane.png' %}"
+            alt=""
+            class="h-28 bg-white"
+          />
+          <h1>
+            <div class="text-sm/6 text-green-500">RAG</div>
+            <div class="mt-1 text-base font-semibold text-green-600">Chat</div>
+          </h1>
+        </div>
+        <div class="flex items-center gap-x-4 sm:gap-x-6">
+          <a
+            href="{% url 'dar_contexto_ia' %}"
+            type="button"
+            class="hidden text-sm/6 font-semibold text-green-600 sm:block hover:text-green-500"
+            >Dar contexto à IA</a
+          >
+          <a
+            href="{% url 'chat' %}"
+            type="button"
+            class="hidden text-sm/6 font-semibold text-green-600 sm:block hover:text-green-500"
+            >Chat</a
+          >
+        </div>
+      </div>
+    </div>
+  </header>
   <div class="px-4 md:px-0">
     <div
       class="mx-auto bg-slate-50 mt-8 max-w-4xl px-4 py-16 sm:px-6 lg:px-8 border border-slate-200/60 rounded-md"
