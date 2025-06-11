@@ -364,3 +364,4 @@ with open("faiss_exportado.json", "w", encoding="utf-8") as jsonfile:
 print("Arquivo faiss_exportado.json criado com sucesso.")
 
 ```
+Projeto baseado no projeto realizado no workshop Arcane oferecido pela https://pythonando.com.br/
