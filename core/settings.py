@@ -41,12 +41,18 @@ MIDDLEWARE = [
 ]
 
 ROLEPERMISSIONS_MODULE = 'core.roles'
+
+REDIS_URL = config('REDIS_URL')
+
 Q_CLUSTER = {
-    "name": "pythonando",
+    "name": "django-ai",
     "workers": 1,
+    "timeout": 300,
     "retry": 120,
     "queue_limit": 50,
     "orm": "default",
+    "broker": REDIS_URL,
+    "sync": False,
 }
 ROOT_URLCONF = 'core.urls'
 
